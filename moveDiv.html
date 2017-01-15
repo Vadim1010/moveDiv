@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>transition</title>
+   
+</head>
+<body>
+
+
+
+
+
+    <script type="text/javascript">
+            let body = document.querySelector('body');
+    for(let i = 0; i<10; i++){
+        let box = document.createElement('div');
+        box.style.width = '100px';
+        box.style.height = '100px';
+        box.style.border = '1px solid red';
+        box.addEventListener('mousedown', ()=>box.addEventListener('mousemove', go));
+        // box.addEventListener('mousemove', go);
+        box.addEventListener('mouseup', ()=>box.removeEventListener('mousemove', go));
+        box.style.backgroundColor = 'rgba(0,0,205,0.3)';
+        body.appendChild(box);
+    }
+    function go(e){
+        this.style.zIndex = 222222222;
+        // this.addEventListener('mouseup', end)
+        this.style.top = (e.pageY-50) + 'px';
+        this.style.left = (e.pageX-50) + 'px';
+        // this.addEventListener('mouseup', end);
+
+    }
+    function end(e){
+        endX = e.pageX-50;
+        endY = e.pageY-50;
+        this.style.top = endY + 'px';
+        this.style.left = endX + 'px';
+        this.removeEventListener('mousemove', go);
+        this.zIndex = 1;
+    }
+
+</script>
+    <style>
+        div{
+            z-index: 1;
+            position: absolute;
+            flot: left;
+        }
+    </style>
+</body>
+</html>
